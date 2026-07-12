@@ -1,0 +1,17 @@
+.login-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.login-submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.85rem;
+}
+
+.login-footnote {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
