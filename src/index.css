@@ -4,11 +4,11 @@
   --bg-surface: rgba(22, 25, 34, 0.7);
   --bg-surface-opaque: #161922;
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-glow: rgba(229, 9, 20, 0.3);
+  --border-color-glow: rgba(137, 207, 240, 0.3);
   
-  --primary: #e50914;
-  --primary-hover: #b80710;
-  --primary-glow: rgba(229, 9, 20, 0.4);
+  --primary: #89CFF0;
+  --primary-hover: #5EB8E0;
+  --primary-glow: rgba(137, 207, 240, 0.4);
   
   --secondary: #6366f1;
   --secondary-hover: #4f46e5;
@@ -154,14 +154,14 @@ select.form-control {
 
 .btn-primary {
   background: var(--primary);
-  color: #fff;
+  color: #04283a;
   box-shadow: var(--shadow-glow);
 }
 
 .btn-primary:hover {
   background: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+  box-shadow: 0 0 20px rgba(137, 207, 240, 0.6);
 }
 
 .btn-secondary {
@@ -217,8 +217,8 @@ select.form-control {
 
 .badge-primary {
   background: var(--primary-glow);
-  color: #ff8e94;
-  border: 1px solid rgba(229, 9, 20, 0.3);
+  color: #bfe6f7;
+  border: 1px solid rgba(137, 207, 240, 0.3);
 }
 
 .badge-success {
@@ -253,7 +253,7 @@ select.form-control {
 .movie-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-  border-color: rgba(229, 9, 20, 0.4);
+  border-color: rgba(137, 207, 240, 0.4);
 }
 
 .movie-poster-wrapper {
@@ -380,7 +380,7 @@ select.form-control {
   margin: 1.5rem auto 3rem auto;
   border-top: 3px solid var(--primary);
   border-radius: 50% / 10px 10px 0 0;
-  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
+  box-shadow: 0 8px 25px rgba(137, 207, 240, 0.4);
   text-align: center;
   color: rgba(255, 255, 255, 0.3);
   font-size: 0.75rem;

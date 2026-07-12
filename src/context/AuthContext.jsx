@@ -26,6 +26,19 @@ export const AuthProvider = ({ children }) => {
     return () => window.removeEventListener('auth-change', handleAuthChange);
   }, []);
 
+  /*
+    O PitStop não tem autocadastro: contas de FUNCIONARIO e ADMIN só
+    são criadas por um ADMIN já logado (tela "Cadastrar Funcionário").
+    Por isso aqui só existe login, não "register".
+
+    A resposta do back-end é:
+      { accessToken, usuario: { id, nome, email, role } }
+
+    Mantemos "cargo" no objeto salvo localmente (em vez de "role")
+    só para deixar explícito que é o campo usado em toda a interface
+    (ProtectedRoute, Navbar etc.), meramente um apelido do "role" que
+    vem da API.
+  */
   const login = async (email, senha) => {
     const data = await api.auth.login(email, senha);
 

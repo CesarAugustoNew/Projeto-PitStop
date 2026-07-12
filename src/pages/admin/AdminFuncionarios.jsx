@@ -3,6 +3,11 @@ import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
 import './admin.css';
 
+/*
+  Cadastro de contas de acesso (FUNCIONARIO ou ADMIN).
+  Só ADMIN acessa esta tela (ver App.jsx e SecurityConfig do back-end:
+  /api/usuarios/** exige ROLE_ADMIN).
+*/
 export const AdminFuncionarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);

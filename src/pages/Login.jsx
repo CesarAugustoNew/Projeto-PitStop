@@ -4,7 +4,15 @@ import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import './Login.css';
 
+/*
+  Tela de login do PitStop Clean Car.
 
+  Diferente do projeto de cinema em que essa tela foi baseada, aqui
+  NÃO existe autocadastro: contas de ADMIN e FUNCIONARIO só são
+  criadas por um ADMIN já autenticado, na tela "Cadastrar Funcionário"
+  (/admin/funcionarios). Por isso este componente só tem o formulário
+  de login, sem alternância para "Cadastrar-se".
+*/
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');

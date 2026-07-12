@@ -27,8 +27,8 @@ export const Navbar = () => {
 
         {user && (
           <div className="navbar-links">
-            <Link to="/" className={`nav-link ${isActive('/')}`}>
-              Dashboard
+            <Link to="/admin/lavagens" className={`nav-link ${isActive('/admin/lavagens')}`}>
+              Lavagens
             </Link>
             <Link to="/admin/carros" className={`nav-link ${isActive('/admin/carros')}`}>
               Veículos
@@ -37,6 +37,9 @@ export const Navbar = () => {
             {isAdmin() && (
               <div className="navbar-admin-section">
                 <span className="navbar-divider">|</span>
+                <Link to="/admin" className={`nav-link navbar-admin-link ${isActive('/admin')}`}>
+                  Dashboard
+                </Link>
                 <Link to="/admin/funcionarios" className={`nav-link navbar-admin-link ${isActive('/admin/funcionarios')}`}>
                   Funcionários
                 </Link>
