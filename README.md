@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🚗 PitStop Clean Car — Front-end
 
 Front-end em **React + Vite** para o painel do lava-rápido PitStop Clean Car. Consome a API **SpringBootAPI-PitStop**.
@@ -35,10 +34,4 @@ A raiz (`/`) só redireciona: para o dashboard se for ADMIN, ou para a tela de L
 
 ---
 
-## ⚠️ Pontos de atenção
 
-- Não existe tela dedicada de gerenciamento de clientes — apenas um cadastro rápido embutido na tela de veículos. Se o volume de clientes crescer, vale criar uma tela própria (listar, editar, excluir).
-- A API do PitStop não expõe (ainda) atualização/edição de veículo ou funcionário pela interface — só criação e remoção.
-=======
-# PitStop Clean Car 
->>>>>>> f690fd87a09bf9ce714567948a812f7d603f0595
