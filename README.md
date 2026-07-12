@@ -1,1 +1,39 @@
-# Projeto-PitStop
+# 🚗 PitStop Clean Car — Front-end
+
+Front-end em **React + Vite** para o painel do lava-rápido PitStop Clean Car, construído a partir da base do projeto CineSenai. Consome a API **SpringBootAPI-PitStop**.
+
+---
+
+## ▶️ Como rodar
+
+```bash
+npm install
+npm run dev
+```
+A aplicação sobe em `http://localhost:3000` e o Vite já está configurado para redirecionar `/api/**` para `http://localhost:8080` (ver `vite.config.js`).
+
+## 🔐 Login
+
+Use o admin criado automaticamente pelo back-end na primeira execução:
+- **E-mail:** `admin@pitstop.com`
+- **Senha:** `Admin@134`
+
+A partir dele, cadastre os funcionários em **Funcionários** (menu do admin).
+
+---
+
+## 🚀 Telas
+
+- **Login** (`/login`) — único ponto de entrada; não há autocadastro (contas só são criadas por um ADMIN).
+- **Dashboard — Resultado do Dia** (`/admin`, **somente ADMIN**) — total de ordens, status e faturamento do dia, com filtro de data.
+- **Funcionários** (`/admin/funcionarios`, **somente ADMIN**) — cadastra contas de ADMIN ou FUNCIONARIO.
+- **Veículos** (`/admin/carros`, ADMIN e FUNCIONARIO) — cadastra veículos vinculados a um cliente; permite cadastrar um cliente novo rapidamente, sem sair da tela.
+
+A raiz (`/`) só redireciona: para o dashboard se for ADMIN, ou para o cadastro de veículos se for FUNCIONARIO.
+
+---
+
+## ⚠️ Pontos de atenção
+
+- Não existe tela dedicada de gerenciamento de clientes — apenas um cadastro rápido embutido na tela de veículos. Se o volume de clientes crescer, vale criar uma tela própria (listar, editar, excluir).
+- A API do PitStop não expõe (ainda) atualização/edição de veículo ou funcionário pela interface — só criação e remoção.
