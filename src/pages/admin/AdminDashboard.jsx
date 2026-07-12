@@ -4,7 +4,10 @@ import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
 import './admin.css';
 
-
+/*
+  Dashboard do resultado do dia — só ADMIN enxerga esta tela
+  (ver App.jsx e SecurityConfig do back-end).
+*/
 export const AdminDashboard = () => {
   const [resultado, setResultado] = useState(null);
   const [data, setData] = useState(() => new Date().toISOString().slice(0, 10));
@@ -13,6 +16,7 @@ export const AdminDashboard = () => {
 
   useEffect(() => {
     carregarResultado(data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const carregarResultado = async (dataConsulta) => {
@@ -114,6 +118,12 @@ export const AdminDashboard = () => {
           </div>
 
           <div className="admin-shortcuts">
+            <Link to="/admin/lavagens" className="admin-shortcut-link">
+              <div className="glass glass-hover admin-shortcut-card">
+                <h4 className="admin-shortcut-title" style={{ color: 'var(--primary)' }}>Registrar Lavagem</h4>
+                <p className="admin-shortcut-desc">Abra uma nova ordem de serviço ou atualize o status de uma em andamento.</p>
+              </div>
+            </Link>
             <Link to="/admin/carros" className="admin-shortcut-link">
               <div className="glass glass-hover admin-shortcut-card">
                 <h4 className="admin-shortcut-title" style={{ color: 'var(--primary)' }}>Cadastrar Veículo</h4>

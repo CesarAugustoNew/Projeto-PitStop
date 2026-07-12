@@ -173,6 +173,45 @@ export const api = {
   },
 
   // ===================================================================
+  // ORDENS DE SERVIÇO (lavagens)
+  // ===================================================================
+
+  ordens: {
+    /*
+      api.ordens.listar()               -> todas
+      api.ordens.listar('EM_LAVAGEM')   -> só as de um status
+    */
+    listar: (status) =>
+      request(status ? `/api/ordens?status=${status}` : '/api/ordens'),
+
+    buscarPorId: (id) => request(`/api/ordens/${id}`),
+
+    /*
+      Abre uma nova lavagem (ordem de serviço).
+      Body: { clienteId, veiculoId, tipoServico, objetosValor, valor }
+      O funcionário responsável é sempre o usuário logado (o back-end
+      extrai isso do token, não é enviado aqui).
+    */
+    criar: (ordem) =>
+      request('/api/ordens', {
+        method: 'POST',
+        body: JSON.stringify(ordem),
+      }),
+
+    /*
+      Avança/ajusta o status: RECEBIDO -> EM_LAVAGEM -> FINALIZADO -> ENTREGUE
+    */
+    atualizarStatus: (id, status) =>
+      request(`/api/ordens/${id}/status`, {
+        method: 'PATCH',
+        body: JSON.stringify({ status }),
+      }),
+
+    deletar: (id) =>
+      request(`/api/ordens/${id}`, { method: 'DELETE' }),
+  },
+
+  // ===================================================================
   // DASHBOARD (resultado do dia)
   // ===================================================================
 

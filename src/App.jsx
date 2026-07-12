@@ -5,12 +5,15 @@ import { ToastProvider } from './context/ToastContext';
 import { Navbar } from './components/Navbar';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
+// Pages
 import Home from './pages/Home';
 import Login from './pages/Login';
 
+// Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminFuncionarios from './pages/admin/AdminFuncionarios';
 import AdminCarros from './pages/admin/AdminCarros';
+import AdminLavagens from './pages/admin/AdminLavagens';
 
 function App() {
   return (
@@ -50,6 +53,16 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['ADMIN', 'FUNCIONARIO']}>
                       <AdminCarros />
+                    </ProtectedRoute>
+                  }
+                />
+
+                {/* Registrar/acompanhar lavagens — ADMIN e FUNCIONARIO usam no dia a dia */}
+                <Route
+                  path="/admin/lavagens"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN', 'FUNCIONARIO']}>
+                      <AdminLavagens />
                     </ProtectedRoute>
                   }
                 />

@@ -3,6 +3,15 @@ import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
 import './admin.css';
 
+/*
+  Cadastro de veículos do lava-rápido. ADMIN e FUNCIONARIO acessam
+  esta tela (ver App.jsx e SecurityConfig do back-end).
+
+  Todo veículo pertence a um cliente já cadastrado. Como ainda não
+  existe uma tela dedicada de clientes, este componente também
+  permite cadastrar um cliente rapidamente (modal secundário) sem
+  sair da tela de veículos.
+*/
 export const AdminCarros = () => {
   const [veiculos, setVeiculos] = useState([]);
   const [clientes, setClientes] = useState([]);
