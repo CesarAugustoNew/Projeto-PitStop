@@ -14,6 +14,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminFuncionarios from './pages/admin/AdminFuncionarios';
 import AdminCarros from './pages/admin/AdminCarros';
 import AdminLavagens from './pages/admin/AdminLavagens';
+import AdminClientes from './pages/admin/AdminClientes';
 
 function App() {
   return (
@@ -63,6 +64,16 @@ function App() {
                   element={
                     <ProtectedRoute allowedRoles={['ADMIN', 'FUNCIONARIO']}>
                       <AdminLavagens />
+                    </ProtectedRoute>
+                  }
+                />
+
+                {/* Cadastro de clientes — ADMIN e FUNCIONARIO usam no dia a dia */}
+                <Route
+                  path="/admin/clientes"
+                  element={
+                    <ProtectedRoute allowedRoles={['ADMIN', 'FUNCIONARIO']}>
+                      <AdminClientes />
                     </ProtectedRoute>
                   }
                 />

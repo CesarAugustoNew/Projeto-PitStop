@@ -1,6 +1,6 @@
 # 🚗 PitStop Clean Car — Front-end
 
-Front-end em **React + Vite** para o painel do lava-rápido PitStop Clean Car. Consome a API **SpringBootAPI-PitStop**.
+Front-end em **React + Vite** para o painel do lava-rápido PitStop Clean Car, construído a partir da base do projeto CineSenai. Consome a API **SpringBootAPI-PitStop**.
 
 ---
 
@@ -28,10 +28,16 @@ A partir dele, cadastre os funcionários em **Funcionários** (menu do admin).
 - **Dashboard — Resultado do Dia** (`/admin`, **somente ADMIN**) — total de ordens, status e faturamento do dia, com filtro de data.
 - **Funcionários** (`/admin/funcionarios`, **somente ADMIN**) — cadastra contas de ADMIN ou FUNCIONARIO.
 - **Veículos** (`/admin/carros`, ADMIN e FUNCIONARIO) — cadastra veículos vinculados a um cliente; permite cadastrar um cliente novo rapidamente, sem sair da tela.
+- **Clientes** (`/admin/clientes`, ADMIN e FUNCIONARIO) — tela própria para cadastrar, editar e remover clientes.
 - **Lavagens** (`/admin/lavagens`, ADMIN e FUNCIONARIO) — registra uma lavagem escolhendo o veículo e o tipo de serviço, e permite atualizar o status (Recebido / Em Lavagem / Finalizado / Entregue, ou seja, se o carro está na espera ou já pronto). **Sem essa tela nenhuma lavagem existia de fato, por isso o dashboard sempre mostrava 0.**
 
 A raiz (`/`) só redireciona: para o dashboard se for ADMIN, ou para a tela de Lavagens se for FUNCIONARIO.
 
+Paleta de cor principal: azul bebê (`--primary: #89CFF0`).
+
 ---
 
+## ⚠️ Pontos de atenção
 
+- Não existe tela dedicada de gerenciamento de clientes — apenas um cadastro rápido embutido na tela de veículos. Se o volume de clientes crescer, vale criar uma tela própria (listar, editar, excluir).
+- A API do PitStop não expõe (ainda) atualização/edição de veículo ou funcionário pela interface — só criação e remoção.
