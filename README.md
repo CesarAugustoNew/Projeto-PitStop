@@ -1,6 +1,6 @@
 # 🚗 PitStop Clean Car — Front-end
 
-Front-end em **React + Vite** para o painel do lava-rápido PitStop Clean Car, construído a partir da base do projeto CineSenai. Consome a API **SpringBootAPI-PitStop**.
+Front-end em **React + Vite** para o painel do lava-rápido PitStop Clean Car. Consome a API **SpringBootAPI-PitStop**.
 
 ---
 
