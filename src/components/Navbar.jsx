@@ -33,6 +33,9 @@ export const Navbar = () => {
             <Link to="/admin/carros" className={`nav-link ${isActive('/admin/carros')}`}>
               Veículos
             </Link>
+            <Link to="/admin/clientes" className={`nav-link ${isActive('/admin/clientes')}`}>
+              Clientes
+            </Link>
 
             {isAdmin() && (
               <div className="navbar-admin-section">
