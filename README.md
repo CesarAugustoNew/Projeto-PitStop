@@ -4,21 +4,6 @@ Front-end em **React + Vite** para o painel do lava-rápido PitStop Clean Car. C
 
 ---
 
-<img width="1916" height="1075" alt="dashboard" src="https://github.com/user-attachments/assets/33916a9f-2e65-458a-9ae6-ec581b12ee6f" />
-<br> <br>
-<img width="1918" height="1078" alt="lavagens" src="https://github.com/user-attachments/assets/75c51345-6696-48fc-a4fe-34b3cbc610ad" />
-<br> <br>
-<img width="1916" height="1077" alt="veiculos" src="https://github.com/user-attachments/assets/f135e881-d055-420a-a454-eff2388840f6" />
-<br> <br>
-<img width="1916" height="1079" alt="clientes" src="https://github.com/user-attachments/assets/4bf5336a-b76b-44c0-b45b-c025f07aa90a" />
-<br> <br>
-<img width="1920" height="1077" alt="usuarios" src="https://github.com/user-attachments/assets/d4e362de-855f-4f7b-8d55-2eb68c164063" />
-
-
-
-
-
-
 ## ▶️ Como rodar
 
 ```bash
