@@ -21,9 +21,9 @@ function App() {
     <BrowserRouter>
       <ToastProvider>
         <AuthProvider>
-          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <div className="app-shell">
             <Navbar />
-            <div style={{ flexGrow: 1 }}>
+            <main className="app-main">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -81,7 +81,7 @@ function App() {
                 {/* Fallback */}
                 <Route path="*" element={<Home />} />
               </Routes>
-            </div>
+            </main>
 
             <footer style={{
               textAlign: 'center',
