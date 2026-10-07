@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
+import { isErroDeVinculo } from '../../utils/format';
 import './admin.css';
 
 /*
@@ -20,6 +22,7 @@ export const AdminClientes = () => {
   const [endereco, setEndereco] = useState('');
 
   const { showToast } = useToast();
+  const confirm = useConfirm();
 
   useEffect(() => { carregarClientes(); }, []);
 
@@ -73,13 +76,23 @@ export const AdminClientes = () => {
   };
 
   const handleDelete = async (cliente) => {
-    if (!window.confirm(`Remover o cliente "${cliente.nome}"? Isso também pode afetar veículos e lavagens vinculados a ele.`)) return;
+    const ok = await confirm({
+      title: 'Remover cliente?',
+      message: `O cliente ${cliente.nome} será removido do cadastro. Essa ação não pode ser desfeita.`,
+      confirmLabel: 'Sim, remover',
+      danger: true,
+    });
+    if (!ok) return;
     try {
       await api.clientes.deletar(cliente.id);
       showToast('Cliente removido com sucesso!', 'success');
       setClientes((prev) => prev.filter((c) => c.id !== cliente.id));
     } catch (err) {
-      showToast(err.message || 'Erro ao remover o cliente. Verifique se ele não possui veículos cadastrados.', 'error');
+      if (isErroDeVinculo(err)) {
+        showToast(`Não é possível remover ${cliente.nome}: ele possui veículos ou lavagens cadastrados. Remova esses registros primeiro.`, 'error');
+      } else {
+        showToast(err.message || 'Erro ao remover o cliente.', 'error');
+      }
     }
   };
 

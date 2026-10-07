@@ -44,12 +44,20 @@ export const Login = () => {
 
   return (
     <div className="auth-container">
+      <aside className="auth-brand">
+        <div className="auth-logo">Pit<span>Stop</span></div>
+        <div>
+          <p className="auth-brand-text">Cada carro de volta à pista, limpo.</p>
+          <p className="auth-brand-sub">Ordens de serviço, veículos e clientes do lava-rápido em um só lugar.</p>
+        </div>
+        <div className="auth-flag" aria-hidden="true" />
+      </aside>
+
+      <div className="auth-form-side">
       <div className="auth-card glass">
 
         <div className="auth-header">
-          <div className="auth-logo">
-            Pit<span>Stop</span>
-          </div>
+          <h1 className="auth-title">Entrar</h1>
           <p className="login-subtitle">Acesse o painel do lava-rápido</p>
         </div>
 
@@ -88,6 +96,7 @@ export const Login = () => {
         <p className="login-footnote">
           Não tem uma conta? Peça a um administrador para cadastrar seu acesso.
         </p>
+      </div>
       </div>
     </div>
   );

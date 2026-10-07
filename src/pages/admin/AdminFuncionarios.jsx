@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
 import './admin.css';
 
 /*
@@ -20,6 +21,7 @@ export const AdminFuncionarios = () => {
   const [role, setRole] = useState('FUNCIONARIO');
 
   const { showToast } = useToast();
+  const confirm = useConfirm();
 
   useEffect(() => { carregarUsuarios(); }, []);
 
@@ -65,7 +67,13 @@ export const AdminFuncionarios = () => {
   };
 
   const handleDelete = async (usuario) => {
-    if (!window.confirm(`Remover o acesso de "${usuario.nome}"?`)) return;
+    const ok = await confirm({
+      title: 'Remover funcionário?',
+      message: `${usuario.nome} perderá o acesso ao sistema. Essa ação não pode ser desfeita.`,
+      confirmLabel: 'Sim, remover',
+      danger: true,
+    });
+    if (!ok) return;
     try {
       await api.usuarios.deletar(usuario.id);
       showToast('Usuário removido com sucesso!', 'success');

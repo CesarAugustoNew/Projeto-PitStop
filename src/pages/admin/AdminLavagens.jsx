@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
+import { formatarEnum } from '../../utils/format';
 import './admin.css';
 
 /*
@@ -32,7 +34,7 @@ const STATUS_ORDEM = [
   { value: 'ENTREGUE', label: 'Entregue (pronto)', badge: 'badge-success' },
 ];
 
-const tipoLabel = (valor) => TIPOS_SERVICO.find((t) => t.value === valor)?.label || valor;
+const tipoLabel = (valor) => TIPOS_SERVICO.find((t) => t.value === valor)?.label || formatarEnum(valor);
 const statusInfo = (valor) => STATUS_ORDEM.find((s) => s.value === valor) || { label: valor, badge: 'badge-primary' };
 
 export const AdminLavagens = () => {
@@ -48,6 +50,7 @@ export const AdminLavagens = () => {
   const [objetosValor, setObjetosValor] = useState('');
 
   const { showToast } = useToast();
+  const confirm = useConfirm();
 
   useEffect(() => { carregarTudo(); }, []);
 
@@ -117,7 +120,13 @@ export const AdminLavagens = () => {
   };
 
   const handleDelete = async (ordem) => {
-    if (!window.confirm(`Remover esta lavagem (${ordem.veiculo?.placa})?`)) return;
+    const ok = await confirm({
+      title: 'Remover lavagem?',
+      message: `A lavagem do veículo ${ordem.veiculo?.placa || ''} será removida. Essa ação não pode ser desfeita.`,
+      confirmLabel: 'Sim, remover',
+      danger: true,
+    });
+    if (!ok) return;
     try {
       await api.ordens.deletar(ordem.id);
       showToast('Lavagem removida com sucesso!', 'success');

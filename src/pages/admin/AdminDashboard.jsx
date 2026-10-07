@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
+import { formatarEnum } from '../../utils/format';
 import './admin.css';
 
 /*
@@ -104,7 +105,7 @@ export const AdminDashboard = () => {
                   <tbody>
                     {resultado.porTipoServico.map((item, index) => (
                       <tr key={index}>
-                        <td className="table-cell-bold">{item.tipoServico}</td>
+                        <td className="table-cell-bold">{formatarEnum(item.tipoServico)}</td>
                         <td className="table-cell-right">{item.quantidade}</td>
                         <td className="table-cell-right table-cell-primary">{formatarPreco(item.total)}</td>
                       </tr>

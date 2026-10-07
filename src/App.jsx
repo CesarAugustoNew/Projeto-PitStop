@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
+import { ConfirmProvider } from './context/ConfirmContext';
 import { Navbar } from './components/Navbar';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
@@ -20,10 +21,11 @@ function App() {
   return (
     <BrowserRouter>
       <ToastProvider>
+      <ConfirmProvider>
         <AuthProvider>
-          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <div className="app-shell">
             <Navbar />
-            <div style={{ flexGrow: 1 }}>
+            <main className="app-main">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -81,7 +83,7 @@ function App() {
                 {/* Fallback */}
                 <Route path="*" element={<Home />} />
               </Routes>
-            </div>
+            </main>
 
             <footer style={{
               textAlign: 'center',
@@ -96,6 +98,7 @@ function App() {
             </footer>
           </div>
         </AuthProvider>
+      </ConfirmProvider>
       </ToastProvider>
     </BrowserRouter>
   );
