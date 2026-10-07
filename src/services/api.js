@@ -61,9 +61,11 @@ const request = async (url, options = {}) => {
       O GlobalExceptionHandler do back-end devolve a mensagem de erro
       no campo "error" (ver GlobalExceptionHandler.java).
     */
-    throw new Error(
+    const erro = new Error(
       errorData.error || errorData.mensagem || errorData.message || `Erro na requisição (Status: ${response.status})`
     );
+    erro.status = response.status;
+    throw erro;
   }
 
   const texto = await response.text();

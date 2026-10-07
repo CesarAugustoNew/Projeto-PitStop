@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
+import { isErroDeVinculo } from '../../utils/format';
 import './admin.css';
 
 /*
@@ -31,6 +33,7 @@ export const AdminCarros = () => {
   const [clienteEndereco, setClienteEndereco] = useState('');
 
   const { showToast } = useToast();
+  const confirm = useConfirm();
 
   useEffect(() => { carregarTudo(); }, []);
 
@@ -76,13 +79,23 @@ export const AdminCarros = () => {
   };
 
   const handleDelete = async (veiculo) => {
-    if (!window.confirm(`Remover o veículo "${veiculo.placa}"?`)) return;
+    const ok = await confirm({
+      title: 'Remover veículo?',
+      message: `O veículo ${veiculo.placa} será removido do cadastro. Essa ação não pode ser desfeita.`,
+      confirmLabel: 'Sim, remover',
+      danger: true,
+    });
+    if (!ok) return;
     try {
       await api.veiculos.deletar(veiculo.id);
       showToast('Veículo removido com sucesso!', 'success');
       carregarTudo();
     } catch (err) {
-      showToast(err.message || 'Erro ao remover o veículo.', 'error');
+      if (isErroDeVinculo(err)) {
+        showToast(`Não é possível remover o veículo ${veiculo.placa}: ele já está vinculado a uma ou mais lavagens. Remova essas lavagens primeiro.`, 'error');
+      } else {
+        showToast(err.message || 'Erro ao remover o veículo.', 'error');
+      }
     }
   };
 
